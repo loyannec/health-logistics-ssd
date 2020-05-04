@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :status %>
-    <%= form.number_field :status %>
+    <%= form.select(:status, Parcel.statuses.map { |status| [status.last, status.first] }, { include_blank: 'None' }) %>
   </div>
 
   <div class="field">

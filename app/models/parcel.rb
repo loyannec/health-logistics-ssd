@@ -1,5 +1,5 @@
 class Parcel < ApplicationRecord
-    def statuses
+    def self.statuses
         return {
             0 => "Info received",
             1 => "Parcel left facility",
