@@ -1,4 +1,7 @@
 class Parcel < ApplicationRecord
+    has_many :contents, inverse_of: :parcel
+    accepts_nested_attributes_for :contents
+
     def self.statuses
         return {
             0 => "Info received",

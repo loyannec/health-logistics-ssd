@@ -15,6 +15,8 @@ class ParcelsController < ApplicationController
   # GET /parcels/new
   def new
     @parcel = Parcel.new
+    # @parcel.contents = [Content.new]
+    # 2.times { @parcel.contents.build }
   end
 
   # GET /parcels/1/edit
@@ -41,6 +43,7 @@ class ParcelsController < ApplicationController
   # PATCH/PUT /parcels/1.json
   def update
     respond_to do |format|
+      Content.where(parcel_id: @parcel.id).destroy_all
       if @parcel.update(parcel_params)
         format.html { redirect_to @parcel, notice: 'Parcel was successfully updated.' }
         format.json { render :show, status: :ok, location: @parcel }
@@ -69,6 +72,6 @@ class ParcelsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def parcel_params
-      params.require(:parcel).permit(:status, :customer, :eircode)
+      params.require(:parcel).permit(:status, :customer, :eircode, contents_attributes: [:name, :quantity, :fragile])
     end
 end

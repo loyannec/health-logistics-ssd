@@ -1,0 +1,19 @@
+<div class="content_item">
+    <div class="field">
+        <%= form.label :name %>
+        <%= form.text_field :name, name: 'parcel[contents_attributes][][name]', value: defined?(content) ? content.name : ''  %>
+    </div>
+
+    <div class="field">
+        <%= form.label :quantity %>
+        <%= form.number_field :quantity, name: 'parcel[contents_attributes][][quantity]', value: defined?(content) ? content.quantity : 1 %>
+    </div>
+
+    <div class="field">
+        <%= form.label :fragile %>
+        <input type="hidden" name="parcel[contents_attributes][][fragile]" value="<%= defined?(content) && content.fragile ? '1' : '0' %>">
+        <input type="checkbox" onchange="javascript:setFragile(this);" <%= defined?(content) && content.fragile ? 'checked' : '' %>>
+    </div>
+
+    <a href="#" onclick="javascript:remove(event, this);">[remove]</a>
+</div>

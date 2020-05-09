@@ -1,3 +1,5 @@
+<%= javascript_include_tag 'parcels' %>
+
 <%= form_with(model: parcel, local: true) do |form| %>
   <% if parcel.errors.any? %>
     <div id="error_explanation">
@@ -24,6 +26,21 @@
   <div class="field">
     <%= form.label :eircode %>
     <%= form.text_field :eircode %>
+  </div>
+
+  <div>
+    <button id="add_content_button">add content</button>
+  </div>
+
+  <div id="content_list">
+    <%= render @parcel.contents, form: form %>
+
+    <script type="text/javascript">
+      $('#add_content_button').click(function (e) {
+        e.preventDefault();
+        $('#content_list').append('<%= j render 'contents/content', form: form %>');
+      });
+    </script>
   </div>
 
   <div class="actions">
