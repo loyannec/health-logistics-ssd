@@ -1,24 +1,26 @@
-# README
+# Setup
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- Install gems:
+```bash
+$ bundle install
+```
 
-Things you may want to cover:
+- Install yarn packages:
+```bash
+$ yarn install --check-files
+```
 
-* Ruby version
+- Create database:
+```bash
+$ rails db:create
+```
 
-* System dependencies
+- Run migrations:
+```bash
+$ rails db:migrate
+```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Start application:
+```bash
+$ rails s
+```
