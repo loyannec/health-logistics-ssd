@@ -2,7 +2,7 @@
 
 <p>
   <strong>Status:</strong>
-  <%= @parcel.status %>
+  <%= Parcel.statuses[@parcel.status] %>
 </p>
 
 <p>
@@ -15,5 +15,25 @@
   <%= @parcel.eircode %>
 </p>
 
-<%= link_to 'Edit', edit_parcel_path(@parcel) %> |
-<%= link_to 'Back', parcels_path %>
+<div>
+  <p><strong>Contents:</strong><%= @parcel.contents.length == 0 ? 'No contents' : '' %></p>
+  <% if @parcel.contents.length %>
+  <table class="w-100">
+    <tr><td>Name</td><td>Quantity</td><td>Fragile</td></tr>
+    <% @parcel.contents.each do |content| %>
+      <tr>
+        <td><%= content.name %></td>
+        <td><%= content.quantity %></td>
+        <td><%= content.fragile ? 'yes' : 'no' %></td>
+      </tr>
+    <% end %>
+    <tr>
+    </tr>
+  </table>
+  <% end %>
+</div>
+
+<div>
+  <%= link_to 'Edit', edit_parcel_path(@parcel) %> |
+  <%= link_to 'Back', parcels_path %>
+</div>
