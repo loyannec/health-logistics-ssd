@@ -1,15 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>HealthLogistics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body class="p-0 d-flex flex-column">
+    <!-- HEADER -->
+    <nav class="navbar navbar-light bg-primary sticky-top">
+        <a class="navbar-brand" href="<%= home_url %>">
+            <%= image_tag('brand.png', class: 'd-inline-block align-top', alt: 'HealthLogistics', width: '30', height: '30') %>
+            <span class="text-light">HealthLogistics</span>
+        </a>
+    </nav>
+    <!-- BODY -->
+    <div class="container-fluid flex-fill p-2">
+        <%= yield %>
+    </div>
+    <!-- FOOTER -->
+    <div class="bg-primary d-flex justify-content-center">
+        <%= image_tag('logo.png', alt: 'HealthLogistics', width: '400') %>
+    </div>
+</body>
 </html>
