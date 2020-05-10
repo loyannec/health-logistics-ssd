@@ -1,0 +1,15 @@
+div.tab-content {
+    position: relative;
+}
+
+div.tab-pane {
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    bottom: 0;
+}
+
+div.tab-pane:not(.show) {
+    display: none !important;
+}

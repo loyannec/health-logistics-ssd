@@ -1,0 +1,19 @@
+<ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="parcels-tab" data-toggle="tab" href="#parcels" role="tab" aria-controls="parcels" aria-selected="true">Parcels</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="contents-tab" data-toggle="tab" href="#contents" role="tab" aria-controls="contents" aria-selected="false">Contents</a>
+    </li>
+</ul>
+
+<div class="tab-content flex-fill" id="myTabContent">
+    <!-- PARCELS -->
+    <div class="tab-pane fade show active d-flex flex-column justify-content-start align-items-stretch" id="parcels" role="tabpanel" aria-labelledby="parcels-tab">
+        <%= render template: 'parcels/index', parcels: @parcels %>
+    </div>
+    <!-- CONTENTS -->
+    <div class="tab-pane fade d-flex flex-column justify-content-start align-items-stretch" id="contents" role="tabpanel" aria-labelledby="contents-tab">
+        <%= render template: 'contents/index', contents: @contents %>
+    </div>
+</div>
