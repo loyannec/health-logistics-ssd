@@ -1,5 +1,6 @@
 class ContentsController < ApplicationController
   before_action :set_content, only: [:show, :edit, :update, :destroy]
+  before_action :set_parcels, only: [:new, :edit]
 
   # GET /contents
   # GET /contents.json
@@ -67,8 +68,13 @@ class ContentsController < ApplicationController
       @content = Content.find(params[:id])
     end
 
+    # Load all parcels
+    def set_parcels
+      @parcels = Parcel.all
+    end
+
     # Only allow a list of trusted parameters through.
     def content_params
-      params.require(:content).permit(:name, :quantity, :fragile)
+      params.require(:content).permit(:name, :quantity, :fragile, :parcel_id)
     end
 end

@@ -17,6 +17,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :parcel_id %>
+    <%= form.select(:parcel_id, @parcels.map { |parcel| [parcel.customer, parcel.id] } ) %>
+  </div>
+
+  <div class="field">
     <%= form.label :quantity %>
     <%= form.number_field :quantity %>
   </div>
