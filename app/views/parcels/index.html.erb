@@ -14,9 +14,9 @@
         <td><%= Parcel.statuses[parcel.status] %></td>
         <td><%= parcel.customer %></td>
         <td><%= parcel.eircode %></td>
-        <td><%= link_to 'Show', parcel, class: 'btn btn-outline-primary btn-sm' %></td>
-        <td><%= link_to 'Edit', edit_parcel_path(parcel), class: 'btn btn-outline-primary btn-sm' %></td>
-        <td><%= link_to 'Destroy', parcel, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger btn-sm' %></td>
+        <td class="td-show-btn"><%= link_to 'Show', parcel, class: 'btn btn-outline-primary btn-sm w-100' %></td>
+        <td class="td-edit-btn"><%= link_to 'Edit', edit_parcel_path(parcel), class: 'btn btn-outline-primary btn-sm w-100' %></td>
+        <td class="td-destroy-btn"><%= link_to 'Destroy', parcel, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger btn-sm w-100' %></td>
       </tr>
     <% end %>
   </tbody>

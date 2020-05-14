@@ -3,8 +3,7 @@
 <%= form_with(model: parcel, local: true) do |form| %>
   <% if parcel.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(parcel.errors.count, "error") %> prohibited this parcel from being saved:</h2>
-
+      <p><%= pluralize(parcel.errors.count, "error") %> prohibited this parcel from being saved:</p>
       <ul>
         <% parcel.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -13,37 +12,41 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.select(:status, Parcel.statuses.map { |status| [status.last, status.first] }, { include_blank: 'None' }) %>
-  </div>
-
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :customer %>
-    <%= form.text_field :customer %>
+    <%= form.text_field :customer, :class => 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :eircode %>
-    <%= form.text_field :eircode %>
+  <div class="form-row mt-4 pl-2 pr-2">
+    <div class="field form-group flex-grow-1">
+      <%= form.label :status %>
+      <%= form.select(:status, Parcel.statuses.map { |status| [status.last, status.first] }, { include_blank: 'None' }, { :class => 'form-control w-100' }) %>
+    </div>
+
+    <div class="field form-group ml-4">
+      <%= form.label :eircode %>
+      <%= form.text_field :eircode, :class => 'form-control' %>
+    </div>
   </div>
 
-  <div>
-    <button id="add_content_button">add content</button>
-  </div>
+  <h6 align="center" class="bg-primary text-light">Contents</h6>
 
   <div id="content_list">
     <%= render @parcel.contents, form: form %>
-
-    <script type="text/javascript">
-      $('#add_content_button').click(function (e) {
-        e.preventDefault();
-        $('#content_list').append('<%= j render 'contents/content', form: form %>');
-      });
-    </script>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-row d-flex mt-5 d-flex justify-content-center">
+    <div class="actions">
+      <%= link_to 'Back', home_url(tab: "parcel"), class: 'btn btn-secondary' %>
+      <button id="add_content_button" class="btn btn-secondary">Add Content</button>
+      <%= form.submit :class => 'btn btn-primary' %>
+    </div>
   </div>
+
+  <script type="text/javascript">
+    $('#add_content_button').click(function (e) {
+      e.preventDefault();
+      $('#content_list').append('<%= j render 'contents/content', form: form %>');
+    });
+  </script>
 <% end %>

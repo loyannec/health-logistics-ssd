@@ -36,4 +36,24 @@ a:focus, a:active {
     box-shadow: none !important;
 }
 
+.content_item:hover {
+    background-color: $secondary-lighter;
+}
+
+.content_item:nth-child(n + 1) {
+    margin-top: 8px;
+}
+
+td.td-show-btn {
+    width: 50px;
+}
+
+td.td-edit-btn {
+    width: 50px;
+}
+
+td.td-destroy-btn {
+    width: 60px;
+}
+
 @import "~bootstrap/scss/bootstrap";

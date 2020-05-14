@@ -59,7 +59,7 @@ class ParcelsController < ApplicationController
   def destroy
     @parcel.destroy
     respond_to do |format|
-      format.html { redirect_to parcels_url, notice: 'Parcel was successfully destroyed.' }
+      format.html { redirect_to home_url(tab: "parcel"), notice: 'Parcel was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

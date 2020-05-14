@@ -5,6 +5,6 @@ function setFragile(checkbox) {
 
 function remove(e, link) {
     e.preventDefault();
-    let item = link.parentElement;
+    let item = link.parentElement.parentElement;
     item.remove();
 }
