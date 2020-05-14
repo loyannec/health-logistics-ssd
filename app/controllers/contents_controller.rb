@@ -47,6 +47,7 @@ class ContentsController < ApplicationController
         format.html { redirect_to @content, notice: 'Content was successfully updated.' }
         format.json { render :show, status: :ok, location: @content }
       else
+        set_parcels
         format.html { render :edit }
         format.json { render json: @content.errors, status: :unprocessable_entity }
       end
