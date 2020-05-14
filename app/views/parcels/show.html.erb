@@ -20,13 +20,13 @@
   <% if @parcel.contents.length > 0 %>
     <table class="w-75 table-row-lined m-auto">
       <tr class="bg-secondary">
-        <td class="text-light" width="70%">Name</td>
+        <td class="text-light pl-2" width="70%">Name</td>
         <td class="text-light" width="15%" align="center">Quantity</td>
         <td class="text-light" width="15%" align="center">Fragile</td>
       </tr>
       <% @parcel.contents.each do |content| %>
         <tr>
-          <td><%= content.name %></td>
+          <td class="pl-2"><%= content.name %></td>
           <td align="center"><%= content.quantity %></td>
           <td align="center"><%= content.fragile ? 'yes' : 'no' %></td>
         </tr>
