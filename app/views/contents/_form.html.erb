@@ -1,8 +1,7 @@
 <%= form_with(model: content, local: true) do |form| %>
   <% if content.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(content.errors.count, "error") %> prohibited this content from being saved:</h2>
-
+      <p><%= pluralize(content.errors.count, "error") %> prohibited this content from being saved:</p>
       <ul>
         <% content.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -11,27 +10,33 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="field form-group">
+    <%= form.label :parcel_id do raw('Parcel Customer') end %>
+    <%= form.select(:parcel_id, @parcels.map { |parcel| [parcel.customer, parcel.id] }, { include_blank: 'Select a customer' }, { :class => 'form-control w-100' } ) %>
   </div>
 
-  <div class="field">
-    <%= form.label :parcel_id %>
-    <%= form.select(:parcel_id, @parcels.map { |parcel| [parcel.customer, parcel.id] } ) %>
+  <div class="form-row mt-4 pl-2 pr-2">
+    <div class="field form-group flex-grow-1">
+      <%= form.label :name %>
+      <%= form.text_field :name, :class => 'form-control' %>
+    </div>
+    <div class="field form-group ml-4 w-25">
+      <%= form.label :quantity %>
+      <%= form.number_field :quantity, :class => 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :quantity %>
-    <%= form.number_field :quantity %>
+  <div class="field form-row pl-2 pr-2">
+    <div class="form-check">
+      <%= form.check_box :fragile, :class => 'form-check-input' %>
+      <%= form.label :fragile, :class => 'form-check-label' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :fragile %>
-    <%= form.check_box :fragile %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-row d-flex mt-5 d-flex justify-content-center">
+    <div class="actions">
+      <%= link_to 'Back', home_url, class: 'btn btn-secondary' %>
+      <%= form.submit :class => 'btn btn-primary' %>
+    </div>
   </div>
 <% end %>

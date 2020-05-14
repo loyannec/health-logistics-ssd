@@ -32,6 +32,7 @@ class ContentsController < ApplicationController
         format.html { redirect_to @content, notice: 'Content was successfully created.' }
         format.json { render :show, status: :created, location: @content }
       else
+        set_parcels
         format.html { render :new }
         format.json { render json: @content.errors, status: :unprocessable_entity }
       end

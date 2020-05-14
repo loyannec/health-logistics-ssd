@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<h5 align="center" class="bg-primary text-light">Parcel</h5>
+
 <p>
   <strong>Status:</strong>
   <%= Parcel.statuses[@parcel.status] %>
@@ -16,24 +18,26 @@
 </p>
 
 <div>
-  <p><strong>Contents:</strong><%= @parcel.contents.length == 0 ? 'No contents' : '' %></p>
-  <% if @parcel.contents.length %>
-  <table class="w-100">
-    <tr><td>Name</td><td>Quantity</td><td>Fragile</td></tr>
-    <% @parcel.contents.each do |content| %>
-      <tr>
-        <td><%= content.name %></td>
-        <td><%= content.quantity %></td>
-        <td><%= content.fragile ? 'yes' : 'no' %></td>
+  <h5 align="center" class="bg-primary text-light">Contents<%= @parcel.contents.length == 0 ? 'No contents' : '' %></h5>
+  <% if @parcel.contents.length > 0 %>
+    <table class="w-75 table-row-lined m-auto">
+      <tr class="bg-secondary">
+        <td class="text-light" width="70%">Name</td>
+        <td class="text-light" width="15%" align="center">Quantity</td>
+        <td class="text-light" width="15%" align="center">Fragile</td>
       </tr>
-    <% end %>
-    <tr>
-    </tr>
-  </table>
+      <% @parcel.contents.each do |content| %>
+        <tr>
+          <td><%= content.name %></td>
+          <td align="center"><%= content.quantity %></td>
+          <td align="center"><%= content.fragile ? 'yes' : 'no' %></td>
+        </tr>
+      <% end %>
+    </table>
   <% end %>
 </div>
 
-<div>
-  <%= link_to 'Edit', edit_parcel_path(@parcel) %> |
-  <%= link_to 'Back', parcels_path %>
+<div class="mt-5 align-self-center">
+  <%= link_to 'Edit', edit_parcel_path(@parcel), class: 'btn btn-primary' %>
+  <%= link_to 'Back', home_url, class: 'btn btn-primary' %>
 </div>

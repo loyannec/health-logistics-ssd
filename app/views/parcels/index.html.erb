@@ -1,11 +1,9 @@
-<p id="notice"><%= notice %></p>
-
-<table>
+<table class="table-alternate">
   <thead>
-    <tr>
-      <th>Status</th>
-      <th>Customer</th>
-      <th>Eircode</th>
+    <tr class="bg-secondary">
+      <th class="text-light">Status</th>
+      <th class="text-light">Customer</th>
+      <th class="text-light">Eircode</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,17 +11,15 @@
   <tbody>
     <% @parcels.each do |parcel| %>
       <tr>
-        <td><%= parcel.status %></td>
+        <td><%= Parcel.statuses[parcel.status] %></td>
         <td><%= parcel.customer %></td>
         <td><%= parcel.eircode %></td>
-        <td><%= link_to 'Show', parcel %></td>
-        <td><%= link_to 'Edit', edit_parcel_path(parcel) %></td>
-        <td><%= link_to 'Destroy', parcel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', parcel, class: 'btn btn-outline-primary btn-sm' %></td>
+        <td><%= link_to 'Edit', edit_parcel_path(parcel), class: 'btn btn-outline-primary btn-sm' %></td>
+        <td><%= link_to 'Destroy', parcel, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger btn-sm' %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Parcel', new_parcel_path %>
+<%= link_to 'New Parcel', new_parcel_path, class: 'btn btn-primary btn-lg mt-5 w-25 align-self-center' %>

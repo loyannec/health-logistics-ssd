@@ -1,6 +1,7 @@
 $primary: #2291F1;
 $secondary: #5E5F5F;
 $danger: #ff3859;
+$secondary-lighter: lighten($secondary, 50%);
 
 html {
     height: 100%;
@@ -8,6 +9,31 @@ html {
 
 body {
     min-height: 100%;
+}
+
+table {
+    border: 1px solid $secondary-lighter;
+}
+
+table.table-alternate {
+    margin-top: 24px;
+}
+
+table.table-alternate tbody tr:hover {
+    background-color: $secondary-lighter;
+}
+
+table.table-alternate tbody tr:nth-child(n + 1) {
+    height: 40px;
+}
+
+table.table-row-lined tbody tr:nth-child(n + 1) {
+    border-top: 1px solid $secondary-lighter;
+}
+
+a:focus, a:active {
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 @import "~bootstrap/scss/bootstrap";

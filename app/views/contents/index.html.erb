@@ -1,11 +1,9 @@
-<p id="notice"><%= notice %></p>
-
-<table>
+<table class="table-alternate">
   <thead>
-    <tr>
-      <th>Name</th>
-      <th>Quantity</th>
-      <th>Fragile</th>
+    <tr class="bg-secondary">
+      <th class="text-light">Name</th>
+      <th class="text-light">Quantity</th>
+      <th class="text-light">Fragile</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,14 +14,12 @@
         <td><%= content.name %></td>
         <td><%= content.quantity %></td>
         <td><%= content.fragile ? 'yes' : 'no' %></td>
-        <td><%= link_to 'Show', content %></td>
-        <td><%= link_to 'Edit', edit_content_path(content) %></td>
-        <td><%= link_to 'Destroy', content, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', content, class: 'btn btn-outline-primary btn-sm' %></td>
+        <td><%= link_to 'Edit', edit_content_path(content), class: 'btn btn-outline-primary btn-sm' %></td>
+        <td><%= link_to 'Destroy', content, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger btn-sm' %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Content', new_content_path %>
+<%= link_to 'New Content', new_content_path, class: 'btn btn-primary btn-lg mt-5 w-25 align-self-center' %>
